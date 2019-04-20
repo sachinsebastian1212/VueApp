@@ -1,28 +1,22 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <quest-form v-bind:data="data"/>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import QuestForm from "./components/QuestForm.vue";
+import Data from "./QuestCreationData.json";
 export default {
-  name: 'app',
+  name: "app",
   components: {
-    HelloWorld
+    "quest-form": QuestForm
+  },
+  data() {
+    return {
+      data: Data
+    };
   }
-}
+};
 </script>
 
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
