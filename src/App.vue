@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <quest-form v-bind:data="data"/>
+    <quest-form v-bind:jsonData="data"/>
   </div>
 </template>
 

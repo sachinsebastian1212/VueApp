@@ -32,28 +32,40 @@
         <option v-for="opt in action" v-bind:key="opt">{{opt}}</option>
       </select>
     </li>
+    <li>
+      <ol class="objective-lists">
+        <li v-for="child in jsonData.children" v-bind:key="child.id">
+          <objective-list v-bind:jsonData="child"/>
+        </li>
+      </ol>
+    </li>
   </ol>
 </template>
 
 <script>
+import ObjectiveList from "./ObjectiveList.vue";
 export default {
+  components: {
+    "objective-list": ObjectiveList
+  },
   props: {
-    rewards: {
-      type: Array,
-      required: true
-    },
-    creationType: {
-      type: Array,
-      required: true
-    },
-    actionType: {
-      type: Array,
-      required: true
-    },
-    action: {
-      type: Array,
+    jsonData: {
+      type: Object,
       required: true
     }
+  },
+  data() {
+    return {
+      creationType: ["auto", "predefined"],
+      rewards: [
+        { desc: "reward1", val: "qr_26" },
+        { desc: "reward2", val: "qr_31" },
+        { desc: "reward3", val: "qr_32" },
+        { desc: "reward4", val: "qr_33" }
+      ],
+      actionType: ["Type1", "Type2", "Type3"],
+      action: ["action1", "action2", "action3"]
+    };
   }
 };
 </script>
