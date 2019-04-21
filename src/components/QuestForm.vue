@@ -57,5 +57,9 @@ button.btn-del{
   padding: 2px 8px;
   z-index: 1;
 }
+
+table td *{
+  width:100%;
+}
 </style>
 
