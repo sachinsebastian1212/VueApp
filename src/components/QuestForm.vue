@@ -43,8 +43,8 @@ ol{
 
 h6.heading{
 position: absolute;
-top:5px;
-left: 47px;
+top:-9px;
+left: 7px;
 background-color:#eee;
 padding: 0 5px;
 z-index: 1;

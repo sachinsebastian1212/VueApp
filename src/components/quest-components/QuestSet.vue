@@ -1,22 +1,27 @@
 <template>
   <ol>
     <b-button variant="danger" class="btn-del">X</b-button>
-    <li>
-      <label>Questset creation</label>
-      <select>
-        <option v-for="opt in creationType" v-bind:key="opt">{{opt}}</option>
-      </select>
-    </li>
-    <li>
-      <label>Reward</label>
-      <select>
-        <option v-for="opt in rewards" v-bind:key="opt.val">{{opt.desc}}</option>
-      </select>
-    </li>
-    <li>
-      <label>Difficulty</label>
-      <input type="number" value="1">
-    </li>
+    <table>
+      <tr>
+        <td v-for="(data,index) in tableHeading" v-bind:key="index">{{data}}</td>
+      </tr>
+      <tr>
+        <td>
+          <select>
+            <option v-for="opt in creationType" v-bind:key="opt">{{opt}}</option>
+          </select>
+        </td>
+        <td>
+          <select>
+            <option v-for="opt in rewards" v-bind:key="opt.val">{{opt.desc}}</option>
+          </select>
+        </td>
+        <td>
+          <input type="number" value="1">
+        </td>
+      </tr>
+    </table>
+    
     <li>
       <ol class="quests">
         <h6 class="heading">{{heading}}</h6>
@@ -49,7 +54,8 @@ export default {
         { desc: "reward3", val: "qr_32" },
         { desc: "reward4", val: "qr_33" }
       ],
-      heading:"Quests"
+      heading: "Quests",
+      tableHeading: ["Questset creation", "Reward", "Difficulty"]
     };
   }
 };

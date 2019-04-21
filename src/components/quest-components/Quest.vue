@@ -1,38 +1,40 @@
 <template>
   <ol>
     <b-button variant="danger" class="btn-del">X</b-button>
-    <li>
-      <label>Quest creation</label>
-      <select>
-        <option v-for="opt in creationType" v-bind:key="opt">{{opt}}</option>
-      </select>
-    </li>
-    <li>
-      <label>Title</label>
-      <input type="text">
-    </li>
-    <li>
-      <label>Description</label>
-      <input type="text">
-    </li>
-    <li>
-      <label>Reward</label>
-      <select>
-        <option v-for="opt in rewards" v-bind:key="opt.val">{{opt.desc}}</option>
-      </select>
-    </li>
-    <li>
-      <label>Quest Action Type</label>
-      <select>
-        <option v-for="opt in actionType" v-bind:key="opt">{{opt}}</option>
-      </select>
-    </li>
-    <li>
-      <label>Quest Action</label>
-      <select>
-        <option v-for="opt in action" v-bind:key="opt">{{opt}}</option>
-      </select>
-    </li>
+    <table>
+      <tr>
+        <td v-for="(data,index) in tableHeading" v-bind:key="index">{{data}}</td>
+      </tr>
+      <tr>
+        <td>
+          <select>
+            <option v-for="opt in creationType" v-bind:key="opt">{{opt}}</option>
+          </select>
+        </td>
+        <td>
+          <input type="text">
+        </td>
+        <td>
+          <input type="text">
+        </td>
+        <td>
+          <select>
+            <option v-for="opt in rewards" v-bind:key="opt.val">{{opt.desc}}</option>
+          </select>
+        </td>
+        <td>
+          <select>
+            <option v-for="opt in actionType" v-bind:key="opt">{{opt}}</option>
+          </select>
+        </td>
+        <td>
+          <select>
+            <option v-for="opt in action" v-bind:key="opt">{{opt}}</option>
+          </select>
+        </td>
+      </tr>
+    </table>
+    
     <li>
       <ol class="objective-lists">
         <h6 class="heading">{{heading}}</h6>
@@ -67,7 +69,15 @@ export default {
       ],
       actionType: ["Type1", "Type2", "Type3"],
       action: ["action1", "action2", "action3"],
-      heading:"Objective Lists"
+      heading: "Objective Lists",
+      tableHeading: [
+        "Quest creation",
+        "Title",
+        "Description",
+        "Reward",
+        "Quest Action Type",
+        "Quest Action"
+      ]
     };
   }
 };
