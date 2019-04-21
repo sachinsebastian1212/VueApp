@@ -1,5 +1,6 @@
 <template>
   <ol>
+    <b-button variant="danger" class="btn-del">X</b-button>
     <li>
       <label>Questset creation</label>
       <select>
@@ -18,6 +19,7 @@
     </li>
     <li>
       <ol class="quests">
+        <h6 class="heading">{{heading}}</h6>
         <li v-for="child in jsonData.children" v-bind:key="child.id">
           <quest v-bind:jsonData="child"/>
         </li>
@@ -46,7 +48,8 @@ export default {
         { desc: "reward2", val: "qr_31" },
         { desc: "reward3", val: "qr_32" },
         { desc: "reward4", val: "qr_33" }
-      ]
+      ],
+      heading:"Quests"
     };
   }
 };

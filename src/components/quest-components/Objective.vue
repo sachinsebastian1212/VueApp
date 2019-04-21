@@ -1,5 +1,6 @@
 <template>
   <ol>
+    <b-button variant="danger" class="btn-del">X</b-button>
     <li>
       <label>Select objective</label>
       <select>

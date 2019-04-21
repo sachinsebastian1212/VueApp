@@ -1,5 +1,6 @@
 <template>
   <ol>
+    <b-button variant="danger" class="btn-del">X</b-button>
     <li>
       <label>Quest creation</label>
       <select>
@@ -34,6 +35,7 @@
     </li>
     <li>
       <ol class="objective-lists">
+        <h6 class="heading">{{heading}}</h6>
         <li v-for="child in jsonData.children" v-bind:key="child.id">
           <objective-list v-bind:jsonData="child"/>
         </li>
@@ -64,7 +66,8 @@ export default {
         { desc: "reward4", val: "qr_33" }
       ],
       actionType: ["Type1", "Type2", "Type3"],
-      action: ["action1", "action2", "action3"]
+      action: ["action1", "action2", "action3"],
+      heading:"Objective Lists"
     };
   }
 };

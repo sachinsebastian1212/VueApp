@@ -1,5 +1,6 @@
 <template>
   <ol>
+    <b-button variant="danger" class="btn-del">X</b-button>
     <li>
       <label>objectiveList creation</label>
       <select>
@@ -8,6 +9,7 @@
     </li>
     <li>
       <ol class="objectives">
+        <h6 class="heading">{{heading}}</h6>
         <li v-for="child in jsonData.children" v-bind:key="child.id">
           <objective v-bind:jsonData="child"/>
         </li>
@@ -30,7 +32,8 @@ export default {
   },
   data() {
     return {
-      creationType: ["auto", "predefined"]
+      creationType: ["auto", "predefined"],
+      heading:"Objectives"
     };
   }
 };
