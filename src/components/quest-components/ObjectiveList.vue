@@ -1,21 +1,21 @@
 <template>
-  <ol>
+  <div class="q-container">
     <b-button variant="danger" class="btn-del">X</b-button>
-    <li>
+    <span class="q-leaf">
       <label>objectiveList creation</label>
       <select>
         <option v-for="opt in creationType" v-bind:key="opt">{{opt}}</option>
       </select>
-    </li>
-    <li>
-      <ol class="objectives">
+    </span>
+    <span class="q-internal">
+      <div class="objectives">
         <h6 class="heading">{{heading}}</h6>
-        <li v-for="child in jsonData.children" v-bind:key="child.id">
+        <span v-for="child in jsonData.children" v-bind:key="child.id">
           <objective v-bind:jsonData="child"/>
-        </li>
-      </ol>
-    </li>
-  </ol>
+        </span>
+      </div>
+    </span>
+  </div>
 </template>
 
 <script>

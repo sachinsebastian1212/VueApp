@@ -1,7 +1,7 @@
 <template>
-  <ol>
+  <div class="q-container">
     <b-button variant="danger" class="btn-del">X</b-button>
-    <li>
+    <span class="q-leaf">
       <label>Select objective</label>
       <select>
         <option
@@ -10,8 +10,8 @@
           v-bind:selected="jsonData.id === opt.val"
         >{{opt.desc}}</option>
       </select>
-    </li>
-  </ol>
+    </span>
+  </div>
 </template>
 
 <script>

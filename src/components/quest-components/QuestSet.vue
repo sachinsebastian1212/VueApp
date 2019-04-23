@@ -1,31 +1,31 @@
 <template>
-  <ol>
+  <div class="q-container">
     <b-button variant="danger" class="btn-del">X</b-button>
-    <li>
+    <span class="q-leaf">
       <label>Questset creation</label>
       <select>
         <option v-for="opt in creationType" v-bind:key="opt">{{opt}}</option>
       </select>
-    </li>
-    <li>
+    </span>
+    <span class="q-leaf">
       <label>Reward</label>
       <select>
         <option v-for="opt in rewards" v-bind:key="opt.val">{{opt.desc}}</option>
       </select>
-    </li>
-    <li>
+    </span>
+    <span class="q-leaf">
       <label>Difficulty</label>
       <input type="number" value="1">
-    </li>
-    <li>
-      <ol class="quests">
+    </span>
+    <span class="q-internal">
+      <div class="quests">
         <h6 class="heading">{{heading}}</h6>
-        <li v-for="child in jsonData.children" v-bind:key="child.id">
+        <span v-for="child in jsonData.children" v-bind:key="child.id">
           <quest v-bind:jsonData="child"/>
-        </li>
-      </ol>
-    </li>
-  </ol>
+        </span>
+      </div>
+    </span>
+  </div>
 </template>
 
 <script>
@@ -49,7 +49,7 @@ export default {
         { desc: "reward3", val: "qr_32" },
         { desc: "reward4", val: "qr_33" }
       ],
-      heading:"Quests"
+      heading: "Quests"
     };
   }
 };

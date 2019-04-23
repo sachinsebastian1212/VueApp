@@ -1,47 +1,47 @@
 <template>
-  <ol>
+  <div class="q-container"> 
     <b-button variant="danger" class="btn-del">X</b-button>
-    <li>
+    <span class="q-leaf">
       <label>Quest creation</label>
       <select>
         <option v-for="opt in creationType" v-bind:key="opt">{{opt}}</option>
       </select>
-    </li>
-    <li>
+    </span>
+    <span class="q-leaf">
       <label>Title</label>
       <input type="text">
-    </li>
-    <li>
+    </span>
+    <span class="q-leaf">
       <label>Description</label>
       <input type="text">
-    </li>
-    <li>
+    </span>
+    <span class="q-leaf">
       <label>Reward</label>
       <select>
         <option v-for="opt in rewards" v-bind:key="opt.val">{{opt.desc}}</option>
       </select>
-    </li>
-    <li>
+    </span>
+    <span class="q-leaf">
       <label>Quest Action Type</label>
       <select>
         <option v-for="opt in actionType" v-bind:key="opt">{{opt}}</option>
       </select>
-    </li>
-    <li>
+    </span>
+    <span class="q-leaf">
       <label>Quest Action</label>
       <select>
         <option v-for="opt in action" v-bind:key="opt">{{opt}}</option>
       </select>
-    </li>
-    <li>
-      <ol class="objective-lists">
+    </span>
+    <span class="q-internal">
+      <div class="objective-lists">
         <h6 class="heading">{{heading}}</h6>
-        <li v-for="child in jsonData.children" v-bind:key="child.id">
+        <span v-for="child in jsonData.children" v-bind:key="child.id">
           <objective-list v-bind:jsonData="child"/>
-        </li>
-      </ol>
-    </li>
-  </ol>
+        </span>
+      </div>
+    </span>
+  </div>
 </template>
 
 <script>
