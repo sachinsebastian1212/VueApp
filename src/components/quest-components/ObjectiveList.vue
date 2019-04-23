@@ -1,20 +1,19 @@
 <template>
   <div class="q-container">
-    <b-button variant="danger" class="btn-del">X</b-button>
-    <span class="q-leaf">
-      <label>objectiveList creation</label>
-      <select>
-        <option v-for="opt in creationType" v-bind:key="opt">{{opt}}</option>
-      </select>
-    </span>
-    <span class="q-internal">
-      <div class="objectives">
-        <h6 class="heading">{{heading}}</h6>
-        <span v-for="child in jsonData.children" v-bind:key="child.id">
-          <objective v-bind:jsonData="child"/>
-        </span>
-      </div>
-    </span>
+    <div class="q-leafs">
+      <b-button variant="danger" class="btn-del">X</b-button>
+      <h6 class="heading">{{heading}}</h6>
+      <span class="q-leaf">
+        <label>objectiveList creation</label>
+        <select>
+          <option v-for="opt in creationType" v-bind:key="opt">{{opt}}</option>
+        </select>
+      </span>
+    </div>
+    <div class="q-internal">
+      <objective v-for="child in jsonData.children" v-bind:key="child.id" v-bind:jsonData="child"/>
+    </div>
+    <b-button variant="success" class="btn-new">{{createBtnTxt}}</b-button>
   </div>
 </template>
 
@@ -33,7 +32,8 @@ export default {
   data() {
     return {
       creationType: ["auto", "predefined"],
-      heading:"Objectives"
+      heading: "Objective List",
+      createBtnTxt: "Add Objective"
     };
   }
 };

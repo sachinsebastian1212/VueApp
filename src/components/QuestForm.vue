@@ -1,11 +1,10 @@
 <template>
   <div id="questForm">
     <div class="quest-sets">
-      <h6 class="heading">{{heading}}</h6>
-      <span v-for="obj in jsonData" v-bind:key="obj.id">
-        <quest-set v-bind:jsonData="obj"/>
-      </span>
+      <quest-set v-for="obj in jsonData" v-bind:key="obj.id" v-bind:jsonData="obj"/>
+      <b-button variant="success" class="btn-new">{{createBtnTxt}}</b-button>
     </div>
+    
   </div>
 </template>
 
@@ -27,34 +26,36 @@ export default {
   data() {
     return {
       creationType: ["auto", "predefined"],
-      heading: "Quest sets"
+      createBtnTxt:"Add QuestSet"
     };
   }
 };
 </script>
 
 <style >
+
 div.q-container {
   position: relative;
   border: 1px solid grey;
   margin-top: 10px;
-  padding: 5px 40px;
+  margin-right: 10px;
+  padding: 5px 30px;
   display: flex;
   flex-wrap: wrap;
-  flex-direction: row;
+  flex-direction: column;
 }
 
-span.leaf {
-  border: 1px solid #aaa;
+div.q-internal{
+  margin-left: 5px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+ span.q-leaf {
+  padding: 4px 7px;
+  display: inline-block;
 }
 
-span.internal{
-  display: block;
-}
-
-span label,select,input{
-  display: inherit;
-}
 
 
 h6.heading {
@@ -72,6 +73,12 @@ button.btn-del {
   top: 0;
   padding: 2px 8px;
   z-index: 1;
+}
+
+button.btn-new{
+  padding: 2px 8px;
+  margin-top:10px;
+  width: 150px;
 }
 </style>
 

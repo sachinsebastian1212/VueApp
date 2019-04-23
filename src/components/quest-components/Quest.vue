@@ -1,46 +1,49 @@
 <template>
-  <div class="q-container"> 
-    <b-button variant="danger" class="btn-del">X</b-button>
-    <span class="q-leaf">
-      <label>Quest creation</label>
-      <select>
-        <option v-for="opt in creationType" v-bind:key="opt">{{opt}}</option>
-      </select>
-    </span>
-    <span class="q-leaf">
-      <label>Title</label>
-      <input type="text">
-    </span>
-    <span class="q-leaf">
-      <label>Description</label>
-      <input type="text">
-    </span>
-    <span class="q-leaf">
-      <label>Reward</label>
-      <select>
-        <option v-for="opt in rewards" v-bind:key="opt.val">{{opt.desc}}</option>
-      </select>
-    </span>
-    <span class="q-leaf">
-      <label>Quest Action Type</label>
-      <select>
-        <option v-for="opt in actionType" v-bind:key="opt">{{opt}}</option>
-      </select>
-    </span>
-    <span class="q-leaf">
-      <label>Quest Action</label>
-      <select>
-        <option v-for="opt in action" v-bind:key="opt">{{opt}}</option>
-      </select>
-    </span>
-    <span class="q-internal">
-      <div class="objective-lists">
-        <h6 class="heading">{{heading}}</h6>
-        <span v-for="child in jsonData.children" v-bind:key="child.id">
-          <objective-list v-bind:jsonData="child"/>
-        </span>
-      </div>
-    </span>
+  <div class="q-container">
+    <div class="q-leafs">
+      <b-button variant="danger" class="btn-del">X</b-button>
+      <h6 class="heading">{{heading}}</h6>
+      <span class="q-leaf">
+        <label>Quest creation</label>
+        <select>
+          <option v-for="opt in creationType" v-bind:key="opt">{{opt}}</option>
+        </select>
+      </span>
+      <span class="q-leaf">
+        <label>Title</label>
+        <input type="text">
+      </span>
+      <span class="q-leaf">
+        <label>Description</label>
+        <input type="text">
+      </span>
+      <span class="q-leaf">
+        <label>Reward</label>
+        <select>
+          <option v-for="opt in rewards" v-bind:key="opt.val">{{opt.desc}}</option>
+        </select>
+      </span>
+      <span class="q-leaf">
+        <label>Quest Action Type</label>
+        <select>
+          <option v-for="opt in actionType" v-bind:key="opt">{{opt}}</option>
+        </select>
+      </span>
+      <span class="q-leaf">
+        <label>Quest Action</label>
+        <select>
+          <option v-for="opt in action" v-bind:key="opt">{{opt}}</option>
+        </select>
+      </span>
+    </div>
+    <div class="q-internal">
+      <objective-list
+        v-for="child in jsonData.children"
+        v-bind:key="child.id"
+        v-bind:jsonData="child"
+      />
+    </div>
+    <b-button variant="success" class="btn-new">{{createBtnTxt}}</b-button>
   </div>
 </template>
 
@@ -67,7 +70,8 @@ export default {
       ],
       actionType: ["Type1", "Type2", "Type3"],
       action: ["action1", "action2", "action3"],
-      heading:"Objective Lists"
+      heading: "Quest",
+      createBtnTxt: "Add ObjectiveList"
     };
   }
 };
