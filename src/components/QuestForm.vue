@@ -1,10 +1,18 @@
 <template>
   <div id="questForm">
     <div class="quest-sets">
-      <quest-set v-for="obj in jsonData" v-bind:key="obj.id" v-bind:jsonData="obj"/>
-      <b-button variant="success" class="btn-new">{{createBtnTxt}}</b-button>
+      <quest-set
+        v-for="(obj,index) in jsonData"
+        v-bind:key="index"
+        v-bind:jsonData="obj"
+        v-on:delBtnClick="handleChildDelButton($event)"
+      />
+      <b-button
+        variant="success"
+        class="btn-new"
+        v-on:click="handleAddButton(jsonData)"
+      >{{createBtnTxt}}</b-button>
     </div>
-    
   </div>
 </template>
 
@@ -26,14 +34,45 @@ export default {
   data() {
     return {
       creationType: ["auto", "predefined"],
-      createBtnTxt:"Add QuestSet"
+      createBtnTxt: "Add QuestSet"
     };
+  },
+  methods: {
+    handleAddButton(arr) {
+      //cheat
+      const obj = {
+        type: "questset",
+        id: "qs_2",
+        children: [
+          {
+            type: "quest",
+            id: "q_1",
+            children: [
+              {
+                type: "objectivelist",
+                id: "ol_1",
+                children: [
+                  {
+                    type: "objective",
+                    id: "ob_77"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      };
+      arr.push(obj);
+    },
+    handleChildDelButton(obj) {
+      console.log(this.jsonData.children.length);
+      if (this.jsonData.children.length > 1) this.jsonData.children.pop(obj);
+    }
   }
 };
 </script>
 
 <style >
-
 div.q-container {
   position: relative;
   border: 1px solid grey;
@@ -45,18 +84,16 @@ div.q-container {
   flex-direction: column;
 }
 
-div.q-internal{
+div.q-internal {
   margin-left: 5px;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
 }
- span.q-leaf {
+span.q-leaf {
   padding: 4px 7px;
   display: inline-block;
 }
-
-
 
 h6.heading {
   position: absolute;
@@ -75,9 +112,9 @@ button.btn-del {
   z-index: 1;
 }
 
-button.btn-new{
+button.btn-new {
   padding: 2px 8px;
-  margin-top:10px;
+  margin-top: 10px;
   width: 150px;
 }
 </style>

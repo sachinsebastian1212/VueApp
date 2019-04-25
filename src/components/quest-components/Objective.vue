@@ -1,6 +1,6 @@
 <template>
   <div class="q-container">
-    <b-button variant="danger" class="btn-del">X</b-button>
+    <b-button variant="danger" class="btn-del" v-on:click="DelButtonEvent(jsonData)">X</b-button>
     <h6 class="heading">{{heading}}</h6>
     <div class="q-leafs">
       <span class="q-leaf">
@@ -35,6 +35,11 @@ export default {
       ],
       heading: "Objective"
     };
+  },
+  methods: {
+    DelButtonEvent(data) {
+      this.$emit("delBtnClick", data);
+    }
   }
 };
 </script>
