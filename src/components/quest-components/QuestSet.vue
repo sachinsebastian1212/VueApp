@@ -23,8 +23,8 @@
 
     <div class="q-internal">
       <quest
-        v-for="(child,index) in jsonData.children"
-        v-bind:key="index"
+        v-for="child in jsonData.children"
+        v-bind:key="child.id"
         v-bind:jsonData="child"
         v-on:delBtnClick="handleChildDelButton($event)"
       />
@@ -59,7 +59,8 @@ export default {
         { desc: "reward4", val: "qr_33" }
       ],
       heading: "Quest set",
-      createBtnTxt: "Add Quest"
+      createBtnTxt: "Add Quest",
+      new_id: 1
     };
   },
   methods: {
@@ -81,6 +82,7 @@ export default {
           }
         ]
       };
+      obj.id = "new_" + this.new_id++;
       arr.push(obj);
     },
     handleChildDelButton(obj) {

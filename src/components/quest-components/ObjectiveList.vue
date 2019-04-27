@@ -12,8 +12,8 @@
     </div>
     <div class="q-internal">
       <objective
-        v-for="(child,index) in jsonData.children"
-        v-bind:key="index"
+        v-for="child in jsonData.children"
+        v-bind:key="child.id"
         v-bind:jsonData="child"
         v-on:delBtnClick="handleChildDelButton($event)"
       />
@@ -42,7 +42,8 @@ export default {
     return {
       creationType: ["auto", "predefined"],
       heading: "Objective List",
-      createBtnTxt: "Add Objective"
+      createBtnTxt: "Add Objective",
+      new_id: 1
     };
   },
   methods: {
@@ -52,6 +53,7 @@ export default {
         type: "objective",
         id: "ob_78"
       };
+      obj.id = "new_" + this.new_id++;
       arr.push(obj);
     },
     handleChildDelButton(obj) {

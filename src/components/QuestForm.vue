@@ -2,8 +2,8 @@
   <div id="questForm">
     <div class="quest-sets">
       <quest-set
-        v-for="(obj,index) in jsonData"
-        v-bind:key="index"
+        v-for="obj in jsonData"
+        v-bind:key="obj.id"
         v-bind:jsonData="obj"
         v-on:delBtnClick="handleChildDelButton($event)"
       />
@@ -34,7 +34,8 @@ export default {
   data() {
     return {
       creationType: ["auto", "predefined"],
-      createBtnTxt: "Add QuestSet"
+      createBtnTxt: "Add QuestSet",
+      new_id: 1
     };
   },
   methods: {
@@ -62,6 +63,7 @@ export default {
           }
         ]
       };
+      obj.id = "new_" + this.new_id++;
       arr.push(obj);
     },
     handleChildDelButton(obj) {
