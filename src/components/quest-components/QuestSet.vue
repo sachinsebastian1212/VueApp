@@ -11,13 +11,13 @@
       </span>
       <span class="q-leaf">
         <label>Reward</label>
-        <select>
-          <option v-for="opt in rewards" v-bind:key="opt.val">{{opt.desc}}</option>
+        <select v-model="jsonData.rewardId">
+          <option v-for="opt in rewards" v-bind:value="opt.val" v-bind:key="opt.val">{{opt.desc}}</option>
         </select>
       </span>
       <span class="q-leaf">
         <label>Difficulty</label>
-        <input type="number" value="1">
+        <input type="number" value="1" v-model="jsonData.difficulty">
       </span>
     </div>
 
@@ -65,7 +65,6 @@ export default {
   },
   methods: {
     handleAddButton(arr) {
-      //cheat
       const obj = {
         type: "quest",
         id: "q_1",

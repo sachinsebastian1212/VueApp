@@ -40,7 +40,6 @@ export default {
   },
   methods: {
     handleAddButton(arr) {
-      //cheat
       const obj = {
         type: "questset",
         id: "qs_2",

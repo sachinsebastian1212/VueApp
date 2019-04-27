@@ -11,16 +11,16 @@
       </span>
       <span class="q-leaf">
         <label>Title</label>
-        <input type="text">
+        <input type="text" v-model="jsonData.title">
       </span>
       <span class="q-leaf">
         <label>Description</label>
-        <input type="text">
+        <input type="text" v-model="jsonData.description">
       </span>
       <span class="q-leaf">
         <label>Reward</label>
-        <select>
-          <option v-for="opt in rewards" v-bind:key="opt.val">{{opt.desc}}</option>
+        <select v-model="jsonData.reward">
+          <option v-for="opt in rewards" v-bind:key="opt.val" v-bind:value="opt.val">{{opt.desc}}</option>
         </select>
       </span>
       <span class="q-leaf">
@@ -82,7 +82,6 @@ export default {
   },
   methods: {
     handleAddButton(arr) {
-      //cheat
       const obj = {
         type: "objectivelist",
         id: "ol_1",

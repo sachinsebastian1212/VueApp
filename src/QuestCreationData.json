@@ -16,11 +16,13 @@
             "id": "ol_1",
             "children": [{
                     "type": "objective",
-                    "id": "ob_78"
+                    "id": "ob_1",
+                    "db_id": "ob_78"
                 },
                 {
                     "type": "objective",
-                    "id": "ob_80"
+                    "id": "ob_2",
+                    "db_id": "ob_80"
                 }
             ]
         }]
@@ -28,6 +30,8 @@
 }, {
     "type": "questset",
     "id": "qs_2",
+    "rewardId": "qr_32",
+    "difficulty": "45",
     "children": [{
         "type": "quest",
         "id": "q_1",
@@ -36,11 +40,13 @@
             "id": "ol_1",
             "children": [{
                     "type": "objective",
-                    "id": "ob_77"
+                    "id": "ob_3",
+                    "db_id": "ob_77"
                 },
                 {
                     "type": "objective",
-                    "id": "ob_79"
+                    "id": "ob_4",
+                    "db_id": "ob_79"
                 }
             ]
         }]

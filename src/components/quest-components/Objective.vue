@@ -5,12 +5,8 @@
     <div class="q-leafs">
       <span class="q-leaf">
         <label>Select objective</label>
-        <select>
-          <option
-            v-for="opt in objectives"
-            v-bind:key="opt.val"
-            v-bind:selected="jsonData.id === opt.val"
-          >{{opt.desc}}</option>
+        <select v-model="jsonData.db_id">
+          <option v-for="opt in objectives" v-bind:key="opt.val" v-bind:value="opt.val">{{opt.desc}}</option>
         </select>
       </span>
     </div>

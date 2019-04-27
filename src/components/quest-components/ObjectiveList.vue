@@ -48,7 +48,6 @@ export default {
   },
   methods: {
     handleAddButton(arr) {
-      //cheat
       const obj = {
         type: "objective",
         id: "ob_78"
