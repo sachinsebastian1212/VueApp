@@ -75,7 +75,8 @@ export default {
             children: [
               {
                 type: "objective",
-                id: "ob_77"
+                id: "ob_77",
+                db_id: "ob_77"
               }
             ]
           }

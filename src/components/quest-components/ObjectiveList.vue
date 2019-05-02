@@ -50,7 +50,8 @@ export default {
     handleAddButton(arr) {
       const obj = {
         type: "objective",
-        id: "ob_78"
+        id: "ob_77",
+        db_id: "ob_77"
       };
       obj.id = "new_" + this.new_id++;
       arr.push(obj);
