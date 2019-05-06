@@ -56,9 +56,12 @@ export default {
       obj.id = "new_" + this.new_id++;
       arr.push(obj);
     },
-    handleChildDelButton(obj) {
-      console.log(this.jsonData.children.length);
-      if (this.jsonData.children.length > 1) this.jsonData.children.pop(obj);
+    handleChildDelButton(data) {
+      if (this.jsonData.children.length > 1) {
+        this.jsonData.children = this.jsonData.children.filter(function(obj1) {
+          return obj1.id !== data.id;
+        });
+      }
     },
     DelButtonEvent(data) {
       this.$emit("delBtnClick", data);

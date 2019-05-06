@@ -25,14 +25,14 @@
       </span>
       <span class="q-leaf">
         <label>Quest Action Type</label>
-        <select>
-          <option v-for="opt in actionType" v-bind:key="opt">{{opt}}</option>
+        <select v-model="jsonData.questActionType">
+          <option v-for="opt in actionType" v-bind:key="opt" v-bind:value="opt">{{opt}}</option>
         </select>
       </span>
       <span class="q-leaf">
         <label>Quest Action</label>
-        <select>
-          <option v-for="opt in action" v-bind:key="opt">{{opt}}</option>
+        <select v-model="jsonData.questAction">
+          <option v-for="opt in action" v-bind:key="opt" v-bind:value="opt">{{opt}}</option>
         </select>
       </span>
     </div>
@@ -96,9 +96,12 @@ export default {
       obj.id = "new_" + this.new_id++;
       arr.push(obj);
     },
-    handleChildDelButton(obj) {
-      console.log(this.jsonData.children.length);
-      if (this.jsonData.children.length > 1) this.jsonData.children.pop(obj);
+    handleChildDelButton(data) {
+      if (this.jsonData.children.length > 1) {
+        this.jsonData.children = this.jsonData.children.filter(function(obj1) {
+          return obj1.id !== data.id;
+        });
+      }
     },
     DelButtonEvent(data) {
       this.$emit("delBtnClick", data);

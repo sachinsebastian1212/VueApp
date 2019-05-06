@@ -43,10 +43,17 @@ export default {
       const obj = {
         type: "questset",
         id: "qs_2",
+        rewardId: "",
+        difficulty: "",
         children: [
           {
             type: "quest",
             id: "q_1",
+            title: "",
+            description: "",
+            reward: "",
+            questActionType: "",
+            questAction: "",
             children: [
               {
                 type: "objectivelist",
@@ -66,9 +73,13 @@ export default {
       obj.id = "new_" + this.new_id++;
       arr.push(obj);
     },
-    handleChildDelButton(obj) {
-      console.log(this.jsonData.children.length);
-      if (this.jsonData.children.length > 1) this.jsonData.children.pop(obj);
+    //Temporarly avoided vue waring
+    handleChildDelButton(data) {
+      if (this.jsonData.length > 1) {
+        this.jsonData = this.jsonData.filter(function(obj1) {
+          return obj1.id !== data.id;
+        });
+      }
     }
   }
 };
