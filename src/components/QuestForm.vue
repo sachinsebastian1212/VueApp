@@ -18,8 +18,6 @@
 
 <script>
 import QuestSet from "./quest-components/QuestSet.vue";
-import "bootstrap/dist/css/bootstrap.css";
-import "bootstrap-vue/dist/bootstrap-vue.css";
 
 export default {
   components: {
@@ -76,9 +74,26 @@ export default {
     //Temporarly avoided vue waring
     handleChildDelButton(data) {
       if (this.jsonData.length > 1) {
-        this.jsonData = this.jsonData.filter(function(obj1) {
-          return obj1.id !== data.id;
-        });
+        this.$bvModal
+          .msgBoxConfirm("Are you sure?")
+          .then(value => {
+            if (value === true)
+              this.jsonData = this.jsonData.filter(obj1 => {
+                return obj1.id !== data.id;
+              });
+          })
+          .catch(err => {
+            // An error occurred
+          });
+      } else {
+        this.$bvModal
+          .msgBoxOk("Cant delete when only one")
+          .then(value => {
+            this.boxOne = value;
+          })
+          .catch(err => {
+            // An error occurred
+          });
       }
     }
   }

@@ -58,9 +58,26 @@ export default {
     },
     handleChildDelButton(data) {
       if (this.jsonData.children.length > 1) {
-        this.jsonData.children = this.jsonData.children.filter(function(obj1) {
-          return obj1.id !== data.id;
-        });
+        this.$bvModal
+          .msgBoxConfirm("Are you sure?")
+          .then(value => {
+            if (value === true)
+              this.jsonData.children = this.jsonData.children.filter(obj1 => {
+                return obj1.id !== data.id;
+              });
+          })
+          .catch(err => {
+            // An error occurred
+          });
+      } else {
+        this.$bvModal
+          .msgBoxOk("Cant delete when only one")
+          .then(value => {
+            this.boxOne = value;
+          })
+          .catch(err => {
+            // An error occurred
+          });
       }
     },
     DelButtonEvent(data) {
