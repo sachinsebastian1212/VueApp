@@ -106,18 +106,12 @@ export default {
                 return obj1.id !== data.id;
               });
           })
-          .catch(err => {
-            // An error occurred
-          });
       } else {
         this.$bvModal
           .msgBoxOk("Cant delete when only one")
           .then(value => {
             this.boxOne = value;
           })
-          .catch(err => {
-            // An error occurred
-          });
       }
     },
     DelButtonEvent(data) {
